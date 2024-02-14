@@ -9,7 +9,7 @@ class ObservableAppState extends EventEmitter {
   account = null
 
 
-  /**@type {Pokeman[]} */
+  /**@type {Pokeman[] | null} */
   pokemen = []
 }
 

@@ -7,9 +7,10 @@ import { pokeApi } from "./AxiosService.js"
 class PokeService {
 
     async getPokemen() {
-        const response = await pokeApi.get('api/v2/pokemon')
+        const response = await pokeApi.get()
 
-        const newPokemen = response.data.map(pokePojo => new Pokeman(pokePojo))
+        console.log(response);
+        const newPokemen = response.data.results.map(pokePojo => new Pokeman(pokePojo))
 
         AppState.pokemen = newPokemen
     }
