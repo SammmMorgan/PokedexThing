@@ -12,6 +12,11 @@ function _drawPokemonCards() {
 
 }
 
+function _drawSpecialPokemon() {
+    const special = AppState.specialPokemon
+    setHTML('pokeDepthInfo', special.depthInfoForPokemon)
+}
+
 
 
 export class PokeController {
@@ -19,6 +24,7 @@ export class PokeController {
     constructor() {
         this.getPokemenToShow()
         AppState.on('pokemen', _drawPokemonCards)
+        AppState.on('specialPokemon', _drawSpecialPokemon)
 
     }
 
@@ -28,6 +34,17 @@ export class PokeController {
             Pop.success
         } catch (error) {
             Pop.error(error)
+        }
+    }
+
+    async pullDepthInfo(pokeName) {
+
+        try {
+            await pokeService.getDepthInfo(pokeName)
+            Pop.success
+        } catch (error) {
+            Pop.error(error)
+
         }
     }
 
